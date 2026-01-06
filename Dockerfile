@@ -5,6 +5,7 @@ RUN apk --no-cache add \
     cmake \
     make \
     g++ \
+    nlohmann-json \
     libosmium-dev \
     protozero-dev \
     rapidjson-dev \
@@ -14,7 +15,7 @@ RUN apk --no-cache add \
     lz4-dev \
     expat-dev
 
-RUN git clone -b v{{ version }} https://github.com/osmcode/osmium-tool.git
+RUN git clone -b v1.18.0 https://github.com/osmcode/osmium-tool.git
 
 WORKDIR osmium-tool
 RUN mkdir build
@@ -23,8 +24,7 @@ RUN cmake ..
 RUN make
 RUN make install
 
-LABEL org.opencontainers.image.created="{{ created }}" \
-      org.opencontainers.image.version="{{ version }}" \
+LABEL org.opencontainers.image.version="1.18.0" \
       org.opencontainers.image.licenses="GPL-3.0" \
       org.opencontainers.image.title="osmium" \
       org.opencontainers.image.description="A multipurpose command line tool for working with OpenStreetMap data based on the Osmium library."
