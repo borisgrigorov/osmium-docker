@@ -24,7 +24,7 @@ do
   sed -i "s/{{ created }}/$CREATED/g" "$TEMP_DOCKERFILE"
 
   # Build the Docker image with the current version tag using the temporary Dockerfile
-  docker build --build-arg VERSION=$VERSION --build-arg TAG=$TAG -t osmium:$VERSION -f "$TEMP_DOCKERFILE" .
+  docker buildx build --platform linux/amd64,linux/arm64 --output=type=registry --build-arg VERSION=$VERSION --build-arg TAG=$TAG -t osmium:$VERSION -f "$TEMP_DOCKERFILE" .
 
   if [ $? -eq 0 ]; then
     echo "Successfully built osmium:$VERSION"

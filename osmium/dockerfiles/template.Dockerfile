@@ -24,10 +24,6 @@ RUN make
 RUN make install
 
 LABEL org.opencontainers.image.created="{{ created }}" \
-      org.opencontainers.image.authors="Isaac Boates <iboates@gmail.com>" \
-      org.opencontainers.image.url="https://github.com/iboates/osm-utilities-docker/tree/master/osm-utilities-docker" \
-      org.opencontainers.image.documentation="https://github.com/iboates/osm-utilities-docker/tree/master/osm-utilities-docker" \
-      org.opencontainers.image.source="https://github.com/iboates/osm-utilities-docker/tree/master/osm-utilities-docker" \
       org.opencontainers.image.version="{{ version }}" \
       org.opencontainers.image.licenses="GPL-3.0" \
       org.opencontainers.image.title="osmium" \
